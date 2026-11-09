@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#087e68">
+<title>Matematika Kelas 6 — Bangun Datar & Sudut</title>
+<style>
+:root{--green:#087e68;--deep:#075747;--gold:#f5bd3e;--cream:#fffaf0;--ink:#193b36;--muted:#60756f;--coral:#ef765e;--sky:#dff3f6;--line:#dce9df}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,"Segoe UI",sans-serif;color:var(--ink);background:#eaf5ed}
+body{background:radial-gradient(circle at 10% 10%,#fff6d9 0 8%,transparent 9%),linear-gradient(135deg,#eaf7ed,#e3f4f5)}
+button{font:inherit;cursor:pointer}.app{max-width:1100px;margin:auto;padding:12px;min-height:100dvh;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 4px 12px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--deep)}.logo{width:42px;height:42px;border-radius:14px;background:var(--green);display:grid;place-items:center;color:white;font-size:22px;box-shadow:0 5px 0 #055646}.tag{font-size:12px;color:var(--muted);font-weight:700}
+.progress{height:7px;background:#d6e7db;border-radius:9px;overflow:hidden;flex:1;max-width:230px}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--green),#69b99b);transition:.25s}
+.stage{background:rgba(255,255,255,.94);border:1px solid #fff;border-radius:25px;box-shadow:0 14px 40px #315d4015;flex:1;min-height:520px;overflow:hidden;display:flex;flex-direction:column}
+.slide{display:none;padding:clamp(18px,4vw,42px);animation:fade .25s ease}.slide.active{display:block}@keyframes fade{from{opacity:.3;transform:translateY(6px)}to{opacity:1;transform:none}}
+.kicker{display:inline-flex;gap:7px;align-items:center;background:#e5f5ec;color:var(--green);padding:7px 12px;border-radius:30px;font-size:14px;font-weight:900;letter-spacing:.04em}
+h1{font-size:clamp(30px,6vw,58px);line-height:1.05;margin:18px 0 12px;color:var(--deep)}h2{font-size:clamp(24px,4vw,36px);line-height:1.12;color:var(--deep);margin:14px 0}h3{margin:0 0 8px;color:var(--deep);font-size:clamp(21px,2.3vw,24px)}p,li{font-size:clamp(17px,2.1vw,19px);line-height:1.68}p{margin:9px 0}.lead{font-size:clamp(17px,2.4vw,21px);color:#46635b;max-width:750px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;min-height:440px}.hero-art{background:linear-gradient(145deg,#e1f5e8,#fff3d3);border-radius:24px;padding:15px}.hero-art svg{width:100%;height:auto;display:block}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0}.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:#f7fbf7;border:1px solid var(--line);border-radius:18px;padding:17px;min-width:0}.card.gold{background:#fff8e5;border-color:#f6e3ae}.card.blue{background:#eff9fb;border-color:#d4ebef}.card.coral{background:#fff1ed;border-color:#f5d8cf}
+.formula{font-size:clamp(18px,3vw,25px);font-weight:900;color:var(--green);background:#e8f5ed;border-radius:12px;padding:12px 15px;display:inline-block;margin:7px 0}
+.note{border-left:5px solid var(--gold);background:#fff8e7;padding:12px 15px;border-radius:0 12px 12px 0;margin:14px 0}
+svg.diagram{width:100%;height:auto;max-height:260px;display:block;margin:8px auto}.small{font-size:15px;color:var(--muted)}.pill{display:inline-block;border-radius:20px;background:#e9f4ed;padding:5px 10px;font-size:14px;font-weight:800;color:var(--green);margin:3px}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:16px}th,td{border:1px solid var(--line);padding:10px;text-align:left}th{background:#e9f5ec;color:var(--deep)}
+.quiz{background:#f4faf6;border:1px solid var(--line);border-radius:18px;padding:18px;margin:16px 0}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.opt{border:2px solid #d8e8dc;background:white;border-radius:12px;padding:11px;text-align:left;color:var(--ink)}.opt:focus,.opt:hover{border-color:var(--green)}.opt.correct{background:#e5f7e9;border-color:#39a36d}.opt.wrong{background:#fff0eb;border-color:var(--coral)}.feedback{font-weight:800;margin-top:10px;min-height:24px}
+.controls{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 4px}.controls button{border:0;border-radius:14px;padding:12px 18px;font-weight:900}.primary{background:var(--green);color:white;box-shadow:0 4px 0 #055646}.secondary{background:white;color:var(--deep);border:1px solid var(--line)!important}.counter{font-size:15px;font-weight:800;color:var(--muted);text-align:center}
+.footer{text-align:center;color:#6d827a;font-size:11px;padding:8px}
+.diagram-label{font-size:14px;fill:#193b36;font-weight:700}
+.angle-tool{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.angle-tool input{accent-color:var(--green);width:min(260px,100%)}
+.clock{max-width:230px;margin:auto;display:block}
+@media(max-width:650px){.app{padding:8px}.top{flex-wrap:wrap}.progress{order:3;max-width:none;flex-basis:100%}.stage{border-radius:19px;min-height:70dvh}.slide{padding:18px 16px}.hero{grid-template-columns:1fr;min-height:0}.hero-art{max-width:430px;margin:auto}.grid,.grid.three{grid-template-columns:1fr}.options{grid-template-columns:1fr}.controls button{padding:11px 13px}.counter{font-size:11px}.tag{display:none}}
+@media(min-width:651px) and (max-width:850px){.grid.three{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="brand"><div class="logo">✦</div><div>MI Nurul Huda Karangkandri <div class="tag">MATEMATIKA • KELAS VI SD/MI</div></div></div>
+ <div class="progress" aria-label="Kemajuan presentasi"><div class="bar" id="bar"></div></div>
+ <div class="tag" id="section">PEMBELAJARAN INTERAKTIF</div>
+</header>
+<main class="stage" id="deck">
+<section class="slide active">
+ <div class="hero">
+  <div><span class="kicker">✦ BELAJAR • BERLATIH • BERPRESTASI</span><h2>Materi Tambahan: Bangun Datar, Sudut & Satuan Waktu</h2>
+  <p class="lead" style="font-size:16px;font-style: italic;"><b>Disusun Oleh: Asngad Suryadin, S.Pd.I</b></p>
+  <p class="lead">Keliling, luas, gabungan bangun datar, mengenal sudut, membaca jam, dan menemukan sudut yang belum diketahui.</p>
+  <p><b>Matematika Kelas 6 SD/MI</b><br><span class="small">Materi pembahasan lengkap • contoh • ilustrasi • latihan interaktif</span></p>
+  <span class="pill">Berpikir teliti</span><span class="pill">Berani mencoba</span><span class="pill">Belajar menyenangkan</span></div>
+  <div class="hero-art"><svg viewBox="0 0 420 300" role="img" aria-label="Ilustrasi segitiga, persegi, dan sudut"><rect x="15" y="18" width="390" height="264" rx="25" fill="#fffdf5"/><path d="M52 215 L135 65 L218 215 Z" fill="#ffd36c" stroke="#087e68" stroke-width="5"/><rect x="240" y="65" width="112" height="112" rx="5" fill="#a9dfc0" stroke="#087e68" stroke-width="5"/><path d="M260 240 L360 240 L360 140" fill="none" stroke="#ef765e" stroke-width="9" stroke-linecap="round"/><path d="M330 240 A30 30 0 0 0 360 210" fill="none" stroke="#ef765e" stroke-width="4"/><circle cx="135" cy="65" r="5" fill="#087e68"/><text x="85" y="245" class="diagram-label">Segitiga</text><text x="260" y="198" class="diagram-label">Persegi</text><text x="267" y="270" class="diagram-label">Sudut</text><path d="M30 40 l10 -15 10 15" stroke="#f2b72f" stroke-width="4" fill="none"/><circle cx="375" cy="40" r="8" fill="#f2b72f"/></svg></div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">01 • PETA BELAJAR</span><h2>Tujuan Pembelajaran</h2>
+ <div class="grid">
+  <div class="card"><h3>📐 Bangun datar</h3><ul><li>Membedakan keliling dan luas.</li><li>Menghitung segitiga, segiempat, dan segi banyak.</li><li>Menghitung bangun gabungan dengan strategi tepat.</li></ul></div>
+  <div class="card"><h3>🕒 Sudut dan waktu</h3><ul><li>Memahami besar dan jenis sudut.</li><li>Menggambar serta mengukur sudut dengan busur derajat.</li><li>Membaca jarum jam dan menghitung durasi.</li><li>Menentukan sudut yang belum diketahui.</li></ul></div>
+ </div>
+ <div class="note"><b>Bekal awal:</b> pahami perkalian, pembagian, satuan panjang (cm, m), satuan luas (cm², m²), dan operasi hitung campuran.</div>
+</section>
+<section class="slide">
+ <span class="kicker">02 • KONSEP DASAR</span><h2>Keliling dan Luas: Apa Bedanya?</h2>
+ <div class="grid">
+  <div class="card gold"><h3>Keliling = panjang tepi</h3><p>Keliling adalah jumlah panjang seluruh sisi yang membatasi bangun. Bayangkan berjalan mengelilingi taman.</p><svg class="diagram" viewBox="0 0 300 150"><rect x="70" y="30" width="160" height="85" fill="#ffe3a0" stroke="#d68b17" stroke-width="6"/><path d="M70 20 V12 H230 V20 M240 30 H250 V115 H240" stroke="#087e68" stroke-width="3" fill="none"/><text x="150" y="78" text-anchor="middle" class="diagram-label">Bagian tepi</text></svg><div class="formula">K = jumlah semua sisi</div><p class="small">Satuan: cm, m, km, dan sebagainya.</p></div>
+  <div class="card blue"><h3>Luas = besar daerah</h3><p>Luas adalah ukuran daerah yang tertutup di dalam bangun. Bayangkan memasang ubin pada lantai.</p><svg class="diagram" viewBox="0 0 300 150"><rect x="70" y="30" width="160" height="85" fill="#b9e7ee" stroke="#087e68" stroke-width="3"/><path d="M110 30 V115 M150 30 V115 M190 30 V115 M70 58 H230 M70 86 H230" stroke="#fff" stroke-width="3"/><text x="150" y="78" text-anchor="middle" class="diagram-label">Daerah dalam</text></svg><div class="formula">L = ukuran daerah</div><p class="small">Satuan persegi: cm², m², dan sebagainya.</p></div>
+ </div>
+ <div class="note">Ingat: keliling memakai satuan panjang, sedangkan luas memakai satuan persegi. Jangan menuliskan luas dalam cm saja.</div>
+</section>
+<section class="slide">
+ <span class="kicker">03 • SEGI EMPAT</span><h2>Persegi dan Persegi Panjang</h2>
+ <div class="grid">
+  <div class="card"><h3>Persegi</h3><svg class="diagram" viewBox="0 0 260 160"><rect x="75" y="20" width="110" height="110" fill="#b9e7c9" stroke="#087e68" stroke-width="4"/><text x="130" y="13" text-anchor="middle" class="diagram-label">s</text><text x="194" y="80" class="diagram-label">s</text></svg><p>Keempat sisi sama panjang dan keempat sudut siku-siku.</p><div class="formula">K = 4 × s</div><div class="formula">L = s × s = s²</div></div>
+  <div class="card"><h3>Persegi panjang</h3><svg class="diagram" viewBox="0 0 260 160"><rect x="40" y="42" width="180" height="78" fill="#ccecf0" stroke="#087e68" stroke-width="4"/><text x="130" y="32" text-anchor="middle" class="diagram-label">p</text><text x="225" y="84" class="diagram-label">l</text></svg><p>Sisi berhadapan sama panjang; panjang (p) dan lebar (l) bisa berbeda.</p><div class="formula">K = 2 × (p + l)</div><div class="formula">L = p × l</div></div>
+ </div>
+ <div class="card gold"><b>Contoh:</b> Persegi dengan sisi 8 cm: K = 4 × 8 = <b>32 cm</b>; L = 8 × 8 = <b>64 cm²</b>.<br>Persegi panjang p = 12 cm dan l = 5 cm: K = 2 × (12 + 5) = <b>34 cm</b>; L = 12 × 5 = <b>60 cm²</b>.</div>
+</section>
+<section class="slide">
+ <span class="kicker">04 • SEGI EMPAT</span><h2>Segitiga, Jajar Genjang, Trapesium</h2>
+ <div class="grid three">
+  <div class="card"><h3>Segitiga</h3><svg class="diagram" viewBox="0 0 220 145"><path d="M35 120 L110 20 L190 120 Z" fill="#ffe2a0" stroke="#087e68" stroke-width="4"/><path d="M110 20 V120" stroke="#ef765e" stroke-dasharray="5 4" stroke-width="3"/><text x="112" y="138" class="diagram-label" text-anchor="middle">alas (a)</text><text x="118" y="78" class="diagram-label">t</text></svg><div class="formula">L = ½ × a × t</div><p>K = sisi 1 + sisi 2 + sisi 3.</p><p class="small">t adalah tinggi yang tegak lurus alas.</p></div>
+  <div class="card"><h3>Jajar genjang</h3><svg class="diagram" viewBox="0 0 220 145"><path d="M65 25 H190 L155 120 H30 Z" fill="#ccecf0" stroke="#087e68" stroke-width="4"/><path d="M65 25 V120" stroke="#ef765e" stroke-dasharray="5 4" stroke-width="3"/><text x="110" y="139" class="diagram-label" text-anchor="middle">alas</text><text x="70" y="80" class="diagram-label">t</text></svg><div class="formula">L = a × t</div><p>K = 2 × (sisi panjang + sisi miring).</p></div>
+  <div class="card"><h3>Trapesium</h3><svg class="diagram" viewBox="0 0 220 145"><path d="M65 30 H155 L195 120 H25 Z" fill="#d9edc7" stroke="#087e68" stroke-width="4"/><path d="M65 30 V120" stroke="#ef765e" stroke-dasharray="5 4" stroke-width="3"/><text x="110" y="20" class="diagram-label" text-anchor="middle">a</text><text x="110" y="139" class="diagram-label" text-anchor="middle">b</text><text x="72" y="80" class="diagram-label">t</text></svg><div class="formula">L = ½ × (a+b) × t</div><p>K = jumlah keempat sisi.</p></div>
+ </div>
+ <div class="note"><b>Catatan penting:</b> tinggi selalu jarak tegak lurus antara alas dan sisi/sejajarannya, bukan panjang sisi miring.</div>
+</section>
+<section class="slide">
+ <span class="kicker">05 • SEGI EMPAT LAINNYA</span><h2>Belah Ketupat dan Layang-Layang</h2>
+ <div class="grid">
+  <div class="card"><h3>Belah ketupat</h3><svg class="diagram" viewBox="0 0 250 170"><path d="M125 8 L205 85 L125 162 L45 85 Z" fill="#f8d4c9" stroke="#087e68" stroke-width="4"/><path d="M45 85 H205 M125 15 V155" stroke="#ef765e" stroke-width="2.5" stroke-dasharray="5 4"/><text x="135" y="53" class="diagram-label">d₁</text><text x="160" y="78" class="diagram-label">d₂</text></svg><div class="formula">K = 4 × s</div><div class="formula">L = ½ × d₁ × d₂</div><p>Semua sisi sama panjang. Diagonal saling tegak lurus dan saling membagi dua.</p></div>
+  <div class="card"><h3>Layang-layang</h3><svg class="diagram" viewBox="0 0 250 170"><path d="M125 12 L195 68 L125 162 L55 68 Z" fill="#ffe7a8" stroke="#087e68" stroke-width="4"/><path d="M125 12 V162 M55 68 H195" stroke="#ef765e" stroke-width="2.5" stroke-dasharray="5 4"/><text x="132" y="48" class="diagram-label">d₁</text><text x="160" y="73" class="diagram-label">d₂</text></svg><div class="formula">K = 2(a+b)</div><div class="formula">L = ½ × d₁ × d₂</div><p>Dua pasang sisi yang berdekatan sama panjang. Diagonalnya saling tegak lurus.</p></div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">06 • SEGI BANYAK</span><h2>Bangun Segi Banyak Beraturan</h2>
+ <p>Segi banyak adalah bangun datar tertutup yang dibatasi ruas-ruas garis lurus. Disebut <b>beraturan</b> jika semua sisi dan semua sudutnya sama besar.</p>
+ <div class="grid three">
+  <div class="card"><svg class="diagram" viewBox="0 0 180 130"><path d="M90 15 L155 62 L130 115 H50 L25 62 Z" fill="#ffe2a0" stroke="#087e68" stroke-width="3"/><text x="90" y="127" text-anchor="middle" class="diagram-label">Segilima</text></svg><b>Segilima beraturan</b><p>K = 5 × s</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 130"><path d="M55 15 H125 L160 65 L125 115 H55 L20 65 Z" fill="#ccecf0" stroke="#087e68" stroke-width="3"/><text x="90" y="127" text-anchor="middle" class="diagram-label">Segienam</text></svg><b>Segienam beraturan</b><p>K = 6 × s</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 130"><path d="M90 10 L110 42 L150 35 L135 68 L165 95 L125 100 L90 120 L55 100 L15 95 L45 68 L30 35 L70 42 Z" fill="#d8edc7" stroke="#087e68" stroke-width="3"/><text x="90" y="127" text-anchor="middle" class="diagram-label">Contoh segi banyak</text></svg><b>Segi banyak lainnya</b><p>K = jumlah seluruh sisi</p></div>
+ </div>
+ <div class="note">Untuk segi banyak tidak beraturan, jumlahkan panjang sisi satu per satu. Luas dapat dihitung dengan membaginya menjadi bangun sederhana (segitiga, persegi panjang, dan lain-lain).</div>
+</section>
+
+<section class="slide">
+ <span class="kicker">07 • CONTOH SEGI BANYAK BERATURAN</span><h2>Contoh Keliling dan Luas Segi Banyak Beraturan</h2>
+ <div class="grid">
+  <div class="card blue"><h3>Contoh: segienam beraturan</h3>
+   <svg class="diagram" viewBox="0 0 260 190"><path d="M75 25 L165 25 L210 95 L165 165 L75 165 L30 95 Z" fill="#ccecf0" stroke="#087e68" stroke-width="4"/><path d="M120 95 L120 25" stroke="#ef765e" stroke-width="3" stroke-dasharray="5 4"/><text x="125" y="18" class="diagram-label">6 cm</text><text x="126" y="62" class="diagram-label">apotema</text><text x="130" y="185" text-anchor="middle" class="diagram-label">6 sisi sama panjang</text></svg>
+   <p>Diketahui setiap sisi 6 cm dan apotema 5,2 cm. Apotema adalah jarak tegak lurus dari titik pusat ke salah satu sisi.</p>
+  </div>
+  <div class="card gold"><h3>A. Mencari keliling</h3><p>Segienam mempunyai 6 sisi yang sama panjang.</p><p>Keliling = banyak sisi × panjang satu sisi.</p><div class="formula">K = 6 × 6 = 36 cm</div>
+   <h3>B. Mencari luas</h3><p>Luas = ½ × keliling × apotema.</p><p>L = ½ × 36 × 5,2 = 18 × 5,2.</p><div class="formula">L = 93,6 cm²</div>
+  </div>
+ </div>
+ <div class="note"><b>Mengapa memakai apotema?</b> Segi banyak beraturan dapat dibagi menjadi beberapa segitiga. Apotema menjadi tinggi segitiga-segitiga itu. Jadi luas seluruhnya dapat dihitung dengan ½ × keliling × apotema.</div>
+ <div class="card"><b>Ingat:</b> keliling memakai satuan panjang (cm), sedangkan luas memakai satuan persegi (cm²). Rumus luas dengan apotema digunakan untuk segi banyak beraturan.</div>
+</section>
+<section class="slide">
+ <span class="kicker">07 • CONTOH TERBIMBING</span><h2>Menghitung Luas Segitiga</h2>
+ <div class="grid">
+  <div class="card blue"><svg class="diagram" viewBox="0 0 300 210"><path d="M45 175 L250 175 L170 35 Z" fill="#ffe3a0" stroke="#087e68" stroke-width="4"/><path d="M170 35 V175" stroke="#ef765e" stroke-width="3" stroke-dasharray="6 5"/><path d="M160 175 V165 H170" stroke="#ef765e" stroke-width="2" fill="none"/><text x="145" y="198" text-anchor="middle" class="diagram-label">alas = 10 cm</text><text x="177" y="110" class="diagram-label">tinggi = 6 cm</text></svg></div>
+  <div class="card"><h3>Soal</h3><p>Sebuah segitiga memiliki alas 10 cm dan tinggi 6 cm. Berapa luasnya?</p><ol><li>Rumus: L = ½ × alas × tinggi.</li><li>Masukkan nilai: L = ½ × 10 × 6.</li><li>Hitung: L = 5 × 6 = 30.</li></ol><div class="formula">L = 30 cm²</div><p class="small">Pastikan satuan luas ditulis persegi.</p></div>
+ </div>
+</section>
+
+<section class="slide">
+ <span class="kicker">09 • CONTOH TERBIMBING</span><h2>Contoh Keliling dan Luas Bangun Datar Lainnya</h2>
+ <div class="grid">
+  <div class="card blue"><h3>1. Jajar genjang</h3><p>Diketahui alas 12 cm, sisi miring 7 cm, dan tinggi 5 cm.</p><p><b>Keliling:</b> K = 2 × (12 + 7) = 2 × 19 = <b>38 cm</b>.</p><p><b>Luas:</b> L = alas × tinggi = 12 × 5 = <b>60 cm²</b>.</p><div class="note">Luas memakai tinggi tegak lurus alas, bukan sisi miring.</div></div>
+  <div class="card gold"><h3>2. Trapesium</h3><p>Sisi sejajar 10 cm dan 6 cm, sisi lainnya 5 cm dan 5 cm, tinggi 4 cm.</p><p><b>Keliling:</b> K = 10 + 6 + 5 + 5 = <b>26 cm</b>.</p><p><b>Luas:</b> L = ½ × (10 + 6) × 4 = <b>32 cm²</b>.</p></div>
+  <div class="card coral"><h3>3. Belah ketupat</h3><p>Panjang sisi 5 cm, diagonal 6 cm dan 8 cm.</p><p><b>Keliling:</b> K = 4 × 5 = <b>20 cm</b>.</p><p><b>Luas:</b> L = ½ × 6 × 8 = <b>24 cm²</b>.</p></div>
+  <div class="card"><h3>4. Layang-layang</h3><p>Dua sisi pendek 5 cm, dua sisi panjang 9 cm. Diagonal 8 cm dan 12 cm.</p><p><b>Keliling:</b> K = 2 × (5 + 9) = <b>28 cm</b>.</p><p><b>Luas:</b> L = ½ × 8 × 12 = <b>48 cm²</b>.</p></div>
+ </div>
+ <div class="note"><b>Langkah mudah:</b> tulis yang diketahui, pilih rumus, masukkan angka, hitung, lalu tulis satuan jawaban.</div>
+</section>
+<section class="slide">
+ <span class="kicker">08 • BANGUN GABUNGAN</span><h2>Keliling dan Luas Bangun Gabungan</h2>
+ <p>Bangun gabungan tersusun dari dua atau lebih bangun sederhana. Strategi utama: gambar ulang, beri ukuran, lalu pisahkan menjadi bagian yang mudah dihitung.</p>
+ <div class="grid">
+  <div class="card"><h3>Contoh bentuk L</h3><svg class="diagram" viewBox="0 0 300 220"><path d="M45 35 H245 V95 H155 V185 H45 Z" fill="#b9e7c9" stroke="#087e68" stroke-width="4"/><path d="M45 35 V185 H155 V95 H245 V35 Z" fill="none" stroke="#087e68" stroke-width="2"/><text x="145" y="25" text-anchor="middle" class="diagram-label">10 cm</text><text x="252" y="70" class="diagram-label">3 cm</text><text x="100" y="207" text-anchor="middle" class="diagram-label">6 cm</text><text x="160" y="143" class="diagram-label">4 cm</text></svg></div>
+  <div class="card gold"><h3>Langkah menghitung</h3><ol><li><b>Luas:</b> pecah bentuk L menjadi dua persegi panjang yang tidak tumpang tindih.</li><li>Hitung luas masing-masing bagian.</li><li>Jumlahkan luas semua bagian.</li><li><b>Keliling:</b> jumlahkan hanya sisi terluar. Garis pemisah di dalam tidak dihitung.</li></ol></div>
+ </div>
+ <div class="note">Jika ada bagian yang dipotong atau berlubang: luas = luas keseluruhan − luas bagian yang dibuang. Keliling tetap mengikuti seluruh batas tepi yang terlihat.</div>
+</section>
+<section class="slide">
+ <span class="kicker">09 • CONTOH GABUNGAN</span><h2>Contoh Perhitungan Bangun Gabungan</h2>
+ <div class="card blue"><p>Sebuah bangun berbentuk huruf L dapat dipandang sebagai persegi panjang besar 10 cm × 8 cm yang dipotong persegi panjang kecil 4 cm × 3 cm pada salah satu sudutnya.</p><svg class="diagram" viewBox="0 0 330 210"><path d="M35 25 H275 V185 H35 Z" fill="#bde5c9" stroke="#087e68" stroke-width="3"/><rect x="35" y="25" width="96" height="60" fill="#fff" stroke="#ef765e" stroke-width="3" stroke-dasharray="5 4"/><text x="83" y="58" text-anchor="middle" class="diagram-label">4 × 3</text><text x="205" y="115" text-anchor="middle" class="diagram-label">Bagian tersisa</text><text x="155" y="15" text-anchor="middle" class="diagram-label">10 cm</text><text x="283" y="110" class="diagram-label">8 cm</text></svg></div>
+ <div class="grid">
+  <div class="card"><h3>Luas</h3><p>Luas besar = 10 × 8 = 80 cm²</p><p>Luas potongan = 4 × 3 = 12 cm²</p><div class="formula">80 − 12 = 68 cm²</div></div>
+  <div class="card"><h3>Keliling</h3><p>Keliling persegi panjang besar = 2 × (10 + 8) = 36 cm.</p><p>Potongan sudut mengganti dua ruas tepi dengan dua ruas baru yang jumlah panjangnya sama (4 + 3).</p><div class="formula">K tetap = 36 cm</div></div>
+ </div>
+ <p class="small">Contoh khusus potongan tepat di sudut. Pada bentuk gabungan lain, telusuri semua sisi terluar dan jumlahkan panjangnya.</p>
+ <div class="card gold">
+  <h3>Contoh tambahan: gabungan persegi dan segitiga</h3>
+  <p>Sebuah segitiga ditempatkan tepat di atas persegi. Persegi memiliki sisi 6 cm. Segitiga memiliki alas 6 cm, tinggi 4 cm, dan dua sisi miring masing-masing 5 cm.</p>
+  <svg class="diagram" viewBox="0 0 330 245" role="img" aria-label="Bangun gabungan berbentuk rumah, terdiri dari persegi dan segitiga di atasnya">
+   <rect x="85" y="105" width="150" height="120" fill="#bde5c9" stroke="#087e68" stroke-width="4"/>
+   <path d="M85 105 L160 5 L235 105 Z" fill="#ffe3a0" stroke="#087e68" stroke-width="4"/>
+   <path d="M85 105 H235" stroke="#ef765e" stroke-width="2.5" stroke-dasharray="6 5"/>
+   <text x="160" y="93" text-anchor="middle" class="diagram-label">alas 6 cm</text>
+   <text x="160" y="170" text-anchor="middle" class="diagram-label">Persegi</text>
+   <text x="160" y="195" text-anchor="middle" class="diagram-label">6 × 6 cm</text>
+   <text x="160" y="48" text-anchor="middle" class="diagram-label">tinggi 4 cm</text>
+   <text x="65" y="58" class="diagram-label">5 cm</text>
+   <text x="242" y="58" class="diagram-label">5 cm</text>
+   <text x="160" y="241" text-anchor="middle" class="diagram-label">Sisi bawah = 6 cm</text>
+  </svg>
+ </div>
+ <div class="grid">
+  <div class="card"><h3>Luas gabungan</h3>
+   <p>Luas persegi = 6 × 6 = 36 cm².</p>
+   <p>Luas segitiga = ½ × alas × tinggi = ½ × 6 × 4 = 12 cm².</p>
+   <div class="formula">Luas total = 36 + 12 = 48 cm²</div>
+  </div>
+  <div class="card"><h3>Keliling gabungan</h3>
+   <p>Jumlahkan sisi yang berada di bagian luar: 3 sisi persegi (6 + 6 + 6) dan 2 sisi miring segitiga (5 + 5).</p>
+   <p>Alas segitiga yang menempel pada persegi adalah garis di dalam bangun, jadi tidak dihitung.</p>
+   <div class="formula">K = 6 + 6 + 6 + 5 + 5 = 28 cm</div>
+  </div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">10 • LATIHAN 1</span><h2>Coba Hitung Keliling dan Luas</h2>
+ <div class="quiz" data-answer="2" data-explain="Keliling = 2 × (9 + 4) = 26 cm. Luas = 9 × 4 = 36 cm²."><h3>1. Persegi panjang memiliki panjang 9 cm dan lebar 4 cm. Pasangan keliling dan luas yang benar adalah …</h3><div class="options"><button class="opt">K = 26 cm; L = 36 cm²</button><button class="opt">K = 36 cm; L = 26 cm²</button><button class="opt">K = 13 cm; L = 36 cm²</button><button class="opt">K = 26 cm²; L = 36 cm</button></div><div class="feedback"></div></div>
+ <div class="quiz" data-answer="1" data-explain="Luas segitiga = ½ × 12 × 5 = 30 cm²."><h3>2. Segitiga memiliki alas 12 cm dan tinggi 5 cm. Luasnya adalah …</h3><div class="options"><button class="opt">60 cm²</button><button class="opt">30 cm²</button><button class="opt">17 cm²</button><button class="opt">34 cm²</button></div><div class="feedback"></div></div>
+</section>
+<section class="slide">
+ <span class="kicker">11 • MENGENAL SUDUT</span><h2>Apa Itu Sudut?</h2>
+ <p>Sudut adalah daerah yang dibentuk oleh dua sinar garis yang memiliki titik pangkal sama. Titik pangkal disebut <b>titik sudut</b>, sedangkan kedua sinar disebut <b>kaki sudut</b>.</p>
+ <div class="grid">
+  <div class="card blue"><svg class="diagram" viewBox="0 0 300 210"><path d="M65 165 H255 M65 165 L180 35" stroke="#087e68" stroke-width="7" stroke-linecap="round"/><path d="M105 165 A40 40 0 0 0 91 135" fill="none" stroke="#ef765e" stroke-width="4"/><circle cx="65" cy="165" r="6" fill="#ef765e"/><text x="49" y="187" class="diagram-label">Titik sudut</text><text x="198" y="185" class="diagram-label">Kaki sudut</text><text x="182" y="34" class="diagram-label">Kaki sudut</text><text x="108" y="142" class="diagram-label">∠</text></svg></div>
+  <div class="card"><h3>Satuan sudut</h3><p>Besar sudut umumnya dinyatakan dalam derajat, ditulis dengan simbol <b>°</b>.</p><div class="formula">Satu putaran = 360°</div><p>Setengah putaran = 180°; seperempat putaran = 90°.</p></div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">12 • JENIS-JENIS SUDUT</span><h2>Mengenali Jenis Sudut</h2>
+ <div class="grid three">
+  <div class="card"><svg class="diagram" viewBox="0 0 180 120"><path d="M30 95 H150 M30 95 V15" stroke="#087e68" stroke-width="6"/><path d="M30 77 H48 V95" stroke="#ef765e" stroke-width="3" fill="none"/></svg><b>Siku-siku</b><p>Tepat 90°.</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 120"><path d="M25 95 H155 M25 95 L85 20" stroke="#087e68" stroke-width="6"/><path d="M57 95 A32 32 0 0 0 45 70" stroke="#ef765e" stroke-width="3" fill="none"/></svg><b lancar="x">Lancip</b><p>Lebih dari 0° dan kurang dari 90°.</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 120"><path d="M25 95 H155 M25 95 L145 40" stroke="#087e68" stroke-width="6"/><path d="M65 95 A40 40 0 0 0 60 77" stroke="#ef765e" stroke-width="3" fill="none"/></svg><b>Tumpul</b><p>Lebih dari 90° dan kurang dari 180°.</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 120"><path d="M25 60 H155" stroke="#087e68" stroke-width="6"/><circle cx="90" cy="60" r="5" fill="#ef765e"/></svg><b>Lurus</b><p>Tepat 180°.</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 120"><path d="M90 60 H155 M90 60 L125 0 M90 60 L25 60 M90 60 L55 120" stroke="#087e68" stroke-width="5"/><path d="M90 15 A45 45 0 1 1 45 60" stroke="#ef765e" stroke-width="3" fill="none"/></svg><b>Refleks</b><p>Lebih dari 180° dan kurang dari 360°.</p></div>
+  <div class="card"><svg class="diagram" viewBox="0 0 180 120"><path d="M90 60 H155 M90 60 V0" stroke="#087e68" stroke-width="5"/><path d="M90 60 A60 60 0 1 1 90 59" stroke="#ef765e" stroke-width="3" fill="none"/></svg><b>Penuh</b><p>Tepat 360° (satu putaran).</p></div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">13 • MENGGAMBAR SUDUT</span><h2>Langkah Menggambar Sudut</h2>
+ <div class="grid">
+  <div class="card"><h3>Contoh: sudut 60°</h3><ol><li>Buat satu sinar garis mendatar dengan titik pangkal O.</li><li>Letakkan pusat busur derajat tepat di O.</li><li>Tandai angka 60° pada skala yang dimulai dari 0° di sisi sinar.</li><li>Tarik sinar kedua dari O melalui tanda tersebut.</li><li>Tulis nama sudut dan ukurannya.</li></ol></div>
+  <div class="card gold"><svg class="diagram" viewBox="0 0 300 210"><path d="M35 165 H265 M35 165 L150 35" stroke="#087e68" stroke-width="5"/><path d="M85 165 A50 50 0 0 0 60 122" stroke="#ef765e" stroke-width="4" fill="none"/><circle cx="35" cy="165" r="5" fill="#ef765e"/><text x="20" y="188" class="diagram-label">O</text><text x="190" y="185" class="diagram-label">Sinar pertama</text><text x="157" y="35" class="diagram-label">Sinar kedua</text><text x="83" y="135" class="diagram-label">60°</text></svg><p class="small">Sketsa ilustratif sudut 60°. Gunakan busur derajat untuk membuat ukuran tepat.</p></div>
+ </div>
+ <div class="note">Saat menggambar, pastikan membaca skala yang benar: mulai dari angka 0° yang berada pada arah sinar awal.</div>
+</section>
+<section class="slide">
+ <span class="kicker">14 • BUSUR DERAJAT</span><h2>Mengukur Sudut dengan Busur Derajat</h2>
+ <div class="grid">
+  <div class="card blue"><svg class="diagram" viewBox="0 0 330 205"><path d="M35 160 H295" stroke="#087e68" stroke-width="4"/><path d="M35 160 L165 28" stroke="#ef765e" stroke-width="4"/><path d="M35 160 A130 130 0 0 0 165 30" stroke="#c6a34c" stroke-width="2" fill="none"/><path d="M35 160 L295 160" stroke="#087e68" stroke-width="4"/><circle cx="35" cy="160" r="5" fill="#ef765e"/><text x="18" y="183" class="diagram-label">Pusat</text><text x="190" y="180" class="diagram-label">0°</text><text x="162" y="22" class="diagram-label">Tanda ukur</text></svg></div>
+  <div class="card"><ol><li>Letakkan titik pusat busur tepat di titik sudut.</li><li>Sejajarkan garis dasar busur dengan salah satu kaki sudut.</li><li>Gunakan skala yang dimulai dari 0° pada kaki tersebut.</li><li>Baca angka tempat kaki lainnya memotong skala.</li></ol><div class="note"><b>Waspada dua skala:</b> satu bertambah dari kiri ke kanan, satu lagi dari kanan ke kiri. Pilih skala yang dimulai dari 0° pada kaki awal.</div></div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">15 • WAKTU</span><h2>Membaca Jam Analog</h2>
+ <div class="grid">
+  <div class="card blue"><svg class="clock" viewBox="0 0 240 240"><circle cx="120" cy="120" r="100" fill="#fffdf5" stroke="#087e68" stroke-width="6"/><g stroke="#087e68" stroke-width="3"><path d="M120 27 V39 M120 201 V213 M27 120 H39 M201 120 H213"/><path d="M73 39 L79 49 M161 191 L167 201 M39 73 L49 79 M191 161 L201 167 M167 39 L161 49 M79 191 L73 201 M201 73 L191 79 M49 161 L39 167"/></g><g fill="#193b36" font-size="17" font-weight="800" text-anchor="middle"><text x="120" y="58">12</text><text x="183" y="126">3</text><text x="120" y="193">6</text><text x="57" y="126">9</text></g><path d="M120 120 L120 68" stroke="#087e68" stroke-width="8" stroke-linecap="round"/><path d="M120 120 L164 145" stroke="#ef765e" stroke-width="5" stroke-linecap="round"/><circle cx="120" cy="120" r="7" fill="#f5bd3e"/><text x="120" y="232" text-anchor="middle" font-size="12" fill="#60756f">Contoh: sekitar pukul 2.00</text></svg></div>
+  <div class="card"><h3>Dua jarum utama</h3><ul><li><b>Jarum pendek:</b> menunjukkan jam.</li><li><b>Jarum panjang:</b> menunjukkan menit.</li><li>Setiap angka pada jam mewakili 5 menit untuk jarum panjang.</li><li>Jarum panjang satu putaran = 60 menit = 1 jam.</li></ul></div>
+ </div>
+ <table><tr><th>Jarum panjang di angka</th><th>Menit</th><th>Contoh bacaan</th></tr><tr><td>12</td><td>00</td><td>07.00</td></tr><tr><td>3</td><td>15</td><td>07.15</td></tr><tr><td>6</td><td>30</td><td>07.30</td></tr><tr><td>9</td><td>45</td><td>07.45</td></tr></table>
+</section>
+<section class="slide">
+ <span class="kicker">16 • GERAKAN JARUM</span><h2>Gerakan Jarum dan Besar Sudut</h2>
+ <div class="grid">
+  <div class="card"><h3>Jarum menit</h3><p>Dalam 60 menit bergerak 360°. Jadi setiap 1 menit bergerak 6°.</p><div class="formula">Sudut = menit × 6°</div><p>15 menit: 15 × 6° = 90°.</p></div>
+  <div class="card"><h3>Jarum jam</h3><p>Dalam 12 jam bergerak 360°. Dalam 1 jam bergerak 30°, atau 0,5° setiap menit.</p><div class="formula">Sudut = jam × 30°</div><p>2 jam: 2 × 30° = 60°.</p></div>
+ </div>
+ <div class="note"><b>Perlu dibedakan:</b> sudut antara jarum jam pada waktu tertentu bergantung pada posisi kedua jarum. Jarum jam juga bergerak perlahan di antara angka-angka, tidak melompat tepat setiap jam.</div>
+ <h3>Contoh: pukul 03.00</h3><p>Jarum menit di angka 12 dan jarum jam di angka 3. Jaraknya 3 interval angka × 30° = <b>90°</b> (sudut terkecil).</p>
+</section>
+<section class="slide">
+ <span class="kicker">17 • DURASI WAKTU</span><h2>Menghitung Lama Kegiatan</h2>
+ <p>Durasi adalah selang waktu dari saat kegiatan dimulai sampai selesai.</p>
+ <div class="grid">
+  <div class="card gold"><h3>Konversi satuan waktu</h3>
+   <p><b>Satuan kecil hingga harian</b></p>
+   <div class="formula">1 menit = 60 detik</div><div class="formula">1 jam = 60 menit</div><div class="formula">1 hari = 24 jam</div><div class="formula">1 minggu = 7 hari</div>
+   <p><b>Satuan bulan dan tahun</b></p>
+   <div class="formula">1 tahun = 12 bulan</div><div class="formula">1 semester = 6 bulan</div><div class="formula">1 triwulan = 3 bulan</div><div class="formula">1 caturwulan = 4 bulan</div>
+   <p><b>Satuan beberapa tahun</b></p>
+   <div class="formula">1 lustrum = 5 tahun</div><div class="formula">1 windu = 8 tahun</div><div class="formula">1 dasawarsa = 10 tahun</div><div class="formula">1 abad = 100 tahun</div><div class="formula">1 milenium = 1.000 tahun</div>
+  </div>
+  <div class="card"><h3>Contoh menghitung dan mengubah satuan</h3>
+   <p><b>Contoh 1:</b> 2 windu = 2 × 8 = <b>16 tahun</b>.</p>
+   <p><b>Contoh 2:</b> 3 dasawarsa = 3 × 10 = <b>30 tahun</b>.</p>
+   <p><b>Contoh 3:</b> 2 tahun 3 bulan = (2 × 12) + 3 = <b>27 bulan</b>.</p>
+   <p><b>Contoh durasi:</b> Belajar dimulai pukul 07.25 dan selesai pukul 09.10.</p>
+   <ol><li>07.25 ke 08.25 = 1 jam.</li><li>08.25 ke 09.10 = 45 menit.</li><li>Total = 1 jam 45 menit = <b>105 menit</b>.</li></ol>
+  </div>
+  <div class="note"><b>Catatan penting:</b> jumlah hari dalam satu bulan tidak selalu sama (28, 29, 30, atau 31 hari). Satu tahun biasa = 365 hari, sedangkan tahun kabisat = 366 hari. Jadi, jangan selalu menganggap 1 bulan = 30 hari atau 1 tahun = 365 hari untuk semua perhitungan kalender.</div>
+ </div>
+ <div class="note">Tips: jika melewati pergantian jam, hitung sampai jam bulat berikutnya, lalu lanjutkan sampai waktu selesai. Untuk durasi lintas tengah malam, lanjutkan hitungan sampai pukul 24.00 lalu teruskan dari 00.00.</div>
+</section>
+<section class="slide">
+ <span class="kicker">18 • SUDUT PADA BANGUN DATAR</span><h2>Jumlah Sudut Dalam</h2>
+ <div class="grid">
+  <div class="card blue"><h3>Segitiga</h3><svg class="diagram" viewBox="0 0 260 170"><path d="M35 140 L125 25 L225 140 Z" fill="#ffe3a0" stroke="#087e68" stroke-width="4"/><text x="39" y="130" class="diagram-label">A</text><text x="123" y="18" class="diagram-label">B</text><text x="226" y="130" class="diagram-label">C</text><text x="85" y="120" class="diagram-label">∠A</text><text x="120" y="55" class="diagram-label">∠B</text><text x="170" y="120" class="diagram-label">∠C</text></svg><div class="formula">A + B + C = 180°</div></div>
+  <div class="card"><h3>Segiempat</h3><svg class="diagram" viewBox="0 0 260 170"><path d="M45 40 L205 25 L225 130 L25 140 Z" fill="#ccecf0" stroke="#087e68" stroke-width="4"/><g class="diagram-label"><text x="30" y="35">A</text><text x="207" y="20">B</text><text x="228" y="145">C</text><text x="12" y="155">D</text></g></svg><div class="formula">A + B + C + D = 360°</div></div>
+ </div>
+ <p>Jumlah sudut dalam segi banyak bersisi n adalah <b>(n − 2) × 180°</b>. Contoh: segilima = (5 − 2) × 180° = 540°; segienam = 720°.</p>
+</section>
+<section class="slide">
+ <span class="kicker">19 • MENENTUKAN SUDUT</span><h2>Mencari Sudut yang Belum Diketahui</h2>
+ <div class="grid">
+  <div class="card"><h3>Contoh 1: segitiga</h3><svg class="diagram" viewBox="0 0 260 170"><path d="M35 140 L130 25 L225 140 Z" fill="#ffe3a0" stroke="#087e68" stroke-width="4"/><text x="53" y="127" class="diagram-label">50°</text><text x="126" y="53" class="diagram-label">60°</text><text x="185" y="127" class="diagram-label">x</text></svg><p>Jumlah sudut segitiga 180°.</p><div class="formula">x = 180° − 50° − 60° = 70°</div></div>
+  <div class="card"><h3>Contoh 2: segiempat</h3><svg class="diagram" viewBox="0 0 260 170"><path d="M45 40 L205 25 L225 130 L25 140 Z" fill="#ccecf0" stroke="#087e68" stroke-width="4"/><text x="50" y="60" class="diagram-label">90°</text><text x="177" y="48" class="diagram-label">80°</text><text x="185" y="118" class="diagram-label">100°</text><text x="36" y="127" class="diagram-label">x</text></svg><p>Jumlah sudut segiempat 360°.</p><div class="formula">x = 360° − 90° − 80° − 100° = 90°</div></div>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">20 • HUBUNGAN SUDUT</span><h2>Sudut Berpelurus dan Berpenyiku</h2>
+ <div class="grid">
+  <div class="card"><h3>Berpelurus</h3><svg class="diagram" viewBox="0 0 260 130"><path d="M20 85 H240 M130 85 L190 20" stroke="#087e68" stroke-width="5"/><path d="M85 85 A45 45 0 0 0 98 55 M130 85 A45 45 0 0 1 160 42" stroke="#ef765e" stroke-width="3" fill="none"/><text x="55" y="65" class="diagram-label">x</text><text x="158" y="75" class="diagram-label">y</text></svg><p>Dua sudut berpelurus jumlahnya 180°.</p><div class="formula">x + y = 180°</div><p>Jika x = 125°, maka y = 55°.</p></div>
+  <div class="card"><h3>Berpenyiku</h3><svg class="diagram" viewBox="0 0 260 130"><path d="M55 105 H210 M55 105 V15 M55 105 L145 35" stroke="#087e68" stroke-width="5"/><path d="M55 88 H72 V105" stroke="#ef765e" stroke-width="2" fill="none"/><text x="78" y="90" class="diagram-label">x</text><text x="60" y="45" class="diagram-label">y</text></svg><p>Dua sudut berpenyiku jumlahnya 90°.</p><div class="formula">x + y = 90°</div><p>Jika x = 35°, maka y = 55°.</p></div>
+ </div>
+ <div class="note">Sudut bertolak belakang (dua garis berpotongan) besarnya sama. Jika satu sudut 70°, sudut yang tepat berhadapan juga 70°.</div>
+</section>
+<section class="slide">
+ <span class="kicker">21 • LATIHAN 2</span><h2>Uji Pemahaman Sudut dan Waktu</h2>
+ <div class="quiz" data-answer="2" data-explain="Sudut siku-siku besarnya tepat 90°."><h3>1. Sudut yang besarnya tepat 90° disebut …</h3><div class="options"><button class="opt">Lancip</button><button class="opt">Tumpul</button><button class="opt">Siku-siku</button><button class="opt">Lurus</button></div><div class="feedback"></div></div>
+ <div class="quiz" data-answer="1" data-explain="Dari 08.20 ke 09.00 = 40 menit, lalu ke 09.15 = 15 menit. Total 55 menit."><h3>2. Kegiatan dimulai 08.20 dan selesai 09.15. Durasi kegiatan adalah …</h3><div class="options"><button class="opt">45 menit</button><button class="opt">55 menit</button><button class="opt">65 menit</button><button class="opt">1 jam 5 menit</button></div><div class="feedback"></div></div>
+ <div class="quiz" data-answer="0" data-explain="Sudut segitiga yang belum diketahui = 180° − 45° − 65° = 70°."><h3>3. Dua sudut segitiga adalah 45° dan 65°. Sudut ketiga adalah …</h3><div class="options"><button class="opt">70°</button><button class="opt">80°</button><button class="opt">90°</button><button class="opt">110°</button></div><div class="feedback"></div></div>
+</section>
+<section class="slide">
+ <span class="kicker">22 • EKSPLORASI INTERAKTIF</span><h2>Geser untuk Melihat Perubahan Sudut</h2>
+ <div class="card blue">
+  <div class="angle-tool"><label for="angle"><b>Besar sudut:</b> <span id="angleVal">60°</span></label><input id="angle" type="range" min="0" max="180" value="60" step="5"></div>
+  <svg class="diagram" viewBox="0 0 320 230" aria-label="Ilustrasi sudut yang berubah"><path d="M55 180 H285" stroke="#087e68" stroke-width="5" stroke-linecap="round"/><path id="ray" d="M55 180 L155 7" stroke="#ef765e" stroke-width="6" stroke-linecap="round"/><path id="arc" d="" stroke="#e5aa27" stroke-width="4" fill="none"/><circle cx="55" cy="180" r="6" fill="#087e68"/><text x="36" y="204" class="diagram-label">O</text><text id="kind" x="170" y="215" class="diagram-label">Sudut lancip</text></svg>
+  <p>Amati: semakin besar sudut, semakin terbuka kedua kaki sudut. Tepat 90° adalah siku-siku dan 180° adalah sudut lurus.</p>
+ </div>
+</section>
+<section class="slide">
+ <span class="kicker">23 • RANGKUMAN</span><h2>Ringkasan Rumus Penting</h2>
+ <table><tr><th>Bangun</th><th>Keliling</th><th>Luas</th></tr>
+ <tr><td>Persegi</td><td>4s</td><td>s²</td></tr><tr><td>Persegi panjang</td><td>2(p+l)</td><td>p×l</td></tr><tr><td>Segitiga</td><td>Jumlah 3 sisi</td><td>½×a×t</td></tr><tr><td>Jajar genjang</td><td>2(a+b)</td><td>a×t</td></tr><tr><td>Trapesium</td><td>Jumlah 4 sisi</td><td>½×(a+b)×t</td></tr><tr><td>Belah ketupat</td><td>4s</td><td>½×d₁×d₂</td></tr><tr><td>Layang-layang</td><td>2(a+b)</td><td>½×d₁×d₂</td></tr><tr><td>Segi banyak beraturan</td><td>n×s</td><td>Sesuaikan bentuk / pecah</td></tr></table>
+ <div class="grid"><div class="card gold"><b>Sudut:</b> segitiga 180°; segiempat 360°; berpelurus 180°; berpenyiku 90°.</div><div class="card"><b>Waktu:</b> 1 jam = 60 menit; jarum menit 6° per menit; jarum jam 30° per jam.</div></div>
+</section>
+<section class="slide">
+ <span class="kicker">24 • PENUTUP</span><div class="hero"><div><h1>Hebat! 🌟</h1><h2>Terus Berlatih</h2><p class="lead">Matematika menjadi lebih mudah ketika kita memahami konsep, menggambar, mencoba, dan memeriksa kembali jawaban.</p><div class="note"><b>Pesan belajar:</b> teliti membaca soal, tuliskan rumus, masukkan angka dengan benar, sertakan satuan, lalu periksa hasilnya.</div><p><b>Terima kasih telah belajar.</b><br>Semoga ilmu bermanfaat dan menambah semangat belajar!</p></div><div class="hero-art"><svg viewBox="0 0 300 250"><path d="M150 20 L180 92 L258 100 L199 151 L215 228 L150 188 L85 228 L101 151 L42 100 L120 92 Z" fill="#f5bd3e" stroke="#087e68" stroke-width="5"/><circle cx="150" cy="125" r="27" fill="#fff8e5"/><path d="M138 125 l9 9 18 -21" stroke="#087e68" stroke-width="6" fill="none" stroke-linecap="round"/></svg></div></div></section>
+</main>
+<nav class="controls" aria-label="Navigasi slide"><button class="secondary" id="prev">← Sebelumnya</button><div class="counter" id="counter">1 / 25</div><button class="primary" id="next">Berikutnya →</button></nav>
+<div class="footer">Madrasah Cerdas • Materi Matematika Kelas VI SD/MI • Gunakan tombol, panah keyboard, atau usap layar untuk berpindah slide</div>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;const bar=document.getElementById('bar'),counter=document.getElementById('counter'),section=document.getElementById('section'),prev=document.getElementById('prev'),next=document.getElementById('next');
+function show(n){index=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===index));counter.textContent=(index+1)+' / '+slides.length;bar.style.width=((index+1)/slides.length*100)+'%';section.textContent=slides[index].querySelector('.kicker')?.textContent||'PEMBELAJARAN';prev.disabled=index===0;next.textContent=index===slides.length-1?'Ulangi ↻':'Berikutnya →';}
+prev.addEventListener('click',()=>show(index-1));next.addEventListener('click',()=>show(index===slides.length-1?0:index+1));
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='PageDown')show(index+1);if(e.key==='ArrowLeft'||e.key==='PageUp')show(index-1)});
+let startX=0;document.getElementById('deck').addEventListener('touchstart',e=>startX=e.changedTouches[0].screenX,{passive:true});document.getElementById('deck').addEventListener('touchend',e=>{let dx=e.changedTouches[0].screenX-startX;if(Math.abs(dx)>60)show(index+(dx<0?1:-1));},{passive:true});
+document.querySelectorAll('.quiz').forEach(q=>{const buttons=[...q.querySelectorAll('.opt')],feedback=q.querySelector('.feedback');buttons.forEach((b,i)=>b.addEventListener('click',()=>{buttons.forEach(x=>x.classList.remove('correct','wrong'));const ok=i===Number(q.dataset.answer);b.classList.add(ok?'correct':'wrong');feedback.textContent=(ok?'✓ Benar! ':'Belum tepat. ')+q.dataset.explain;}));});
+const slider=document.getElementById('angle');if(slider){function update(){const a=Number(slider.value),r=100,rad=-a*Math.PI/180,x=55+r*Math.cos(rad),y=180+r*Math.sin(rad);document.getElementById('angleVal').textContent=a+'°';document.getElementById('ray').setAttribute('d',`M55 180 L${x} ${y}`);document.getElementById('arc').setAttribute('d',`M105 180 A50 50 0 ${a>180?1:0} 0 ${55+50*Math.cos(rad)} ${180+50*Math.sin(rad)}`);document.getElementById('kind').textContent=a===0?'Sudut nol':a<90?'Sudut lancip':a===90?'Sudut siku-siku':a<180?'Sudut tumpul':'Sudut lurus';}slider.addEventListener('input',update);update();}
+show(0);
+</script>
+</body></html>
